@@ -4,10 +4,21 @@
 
 ## ツール一覧
 
-| ツール | 説明 |
-|---|---|
+| ツール            | 説明                                                          |
+| ----------------- | ------------------------------------------------------------- |
 | CUR CSV Generator | AWS CUR（Cost and Usage Report）のCSVファイルを生成するツール |
-| Base64 Encoder | ファイルをBase64文字列にエンコードするツール |
+| Base64 Encoder    | ファイルをBase64文字列にエンコードするツール                  |
+
+## 環境変数の設定
+
+`.env.local` ファイルをプロジェクトルートに作成し、以下の環境変数を設定してください。
+
+```bash
+BASIC_AUTH_USER=your_username
+BASIC_AUTH_PASSWORD=your_password
+```
+
+Basic 認証に使用されます。
 
 ## セットアップ
 
