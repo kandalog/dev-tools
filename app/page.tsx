@@ -1,4 +1,4 @@
-import ToolCard from "./components/ToolCard";
+import ToolCard from "@/app/components/ToolCard";
 
 export default function Home() {
   const tools = [
@@ -7,17 +7,18 @@ export default function Home() {
       description: "Base64のエンコード・デコードツール",
       href: "/base64",
     },
+    {
+      title: "CUR CSV Generator",
+      description: "AWS CURのCSVファイルを生成するツール",
+      href: "/cur-csv-generator",
+    },
   ];
 
   return (
-    <main className="min-h-screen bg-gray-950 p-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => (
-            <ToolCard key={tool.href} {...tool} />
-          ))}
-        </div>
-      </div>
-    </main>
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {tools.map((tool) => (
+        <ToolCard key={tool.href} {...tool} />
+      ))}
+    </div>
   );
 }
