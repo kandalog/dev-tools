@@ -2,6 +2,7 @@
 
 import { AWS_CUR_RECORDS } from "@/features/cur-csv-generator/assets/cur-csv-base";
 import { RowData } from "@/features/cur-csv-generator/types";
+import { getCsvFilename } from "@/lib/storage";
 
 // 行データをCUR形式のCSV文字列に変換する
 const buildCsvString = (rows: RowData[]): string => {
@@ -40,18 +41,30 @@ const createCsvBlob = (csv: string): Blob => {
   return new Blob([bom + csv], { type: "text/csv;charset=utf-8;" });
 };
 
+const resolveFilename = (): string => {
+  const stored = getCsvFilename();
+  if (stored) return stored;
+
+  alert(
+    "ファイル名が未設定です。\n設定ページから出力されるファイル名を変更できます。"
+  );
+  return "default";
+};
+
 export const useCsvExport = (rows: RowData[]) => {
   const generateCsv = () => {
+    const filename = resolveFilename();
     const blob = createCsvBlob(buildCsvString(rows));
-    downloadFile(blob, "cur-report.csv");
+    downloadFile(blob, `${filename}.csv`);
   };
 
   const generateGz = async () => {
+    const filename = resolveFilename();
     const blob = createCsvBlob(buildCsvString(rows));
     const cs = new CompressionStream("gzip");
     const compressedStream = blob.stream().pipeThrough(cs);
     const compressedBlob = await new Response(compressedStream).blob();
-    downloadFile(compressedBlob, "cur-report.csv.gz");
+    downloadFile(compressedBlob, `${filename}.csv.gz`);
   };
 
   return { generateCsv, generateGz };
