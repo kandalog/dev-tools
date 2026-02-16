@@ -30,6 +30,8 @@ export const SERVICE_OPTIONS = [
   "AWSCloudTrail",
 ];
 
+export const TAX_OPTIONS = ["------", "税金"];
+
 export const createEmptyRow = (): RowData => ({
   date: DATE_OPTIONS[0],
   dateCustom: false,
@@ -37,4 +39,5 @@ export const createEmptyRow = (): RowData => ({
   costCustom: false,
   service: SERVICE_OPTIONS[0],
   serviceCustom: false,
+  tax: TAX_OPTIONS[0],
 });

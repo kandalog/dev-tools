@@ -14,12 +14,13 @@ export const CsvInfoTable = ({
 }: CsvInfoTableProps) => {
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-[1fr_1fr_1fr_40px] gap-3">
+      <div className="grid grid-cols-[1fr_1fr_1fr_auto_40px] gap-3">
         <span className="text-sm font-medium text-gray-400">日付</span>
         <span className="text-sm font-medium text-gray-400">コスト</span>
         <span className="text-sm font-medium text-gray-400">
           AWS Service
         </span>
+        <span className="text-sm font-medium text-gray-400">税金</span>
         <span />
       </div>
 

@@ -13,6 +13,9 @@ const buildCsvString = (rows: RowData[]): string => {
     record.line_item_usage_start_date = `${row.date}T00:00:00.000Z`;
     record.line_item_unblended_cost = Number(row.cost);
     record.line_item_product_code = row.service;
+    if (row.tax === "税金") {
+      record.line_item_line_item_type = "Tax";
+    }
     return headers.map((key) => {
       const val = record[key as keyof typeof record];
       const str = String(val);

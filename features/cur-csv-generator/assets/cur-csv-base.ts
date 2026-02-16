@@ -20,7 +20,7 @@ export const AWS_CUR_RECORDS = [
     line_item_currency_code: "USD",
     line_item_legal_entity: "",
     line_item_line_item_description: "",
-    line_item_line_item_type: "Tax",
+    line_item_line_item_type: "",
     line_item_net_unblended_cost: 100,
     line_item_net_unblended_rate: 0,
     line_item_normalization_factor: 0,

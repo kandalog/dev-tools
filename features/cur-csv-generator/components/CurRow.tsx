@@ -1,6 +1,6 @@
 import { SelectableField } from "@/features/cur-csv-generator/components/SelectableField";
 import { RowData } from "@/features/cur-csv-generator/types";
-import { DATE_OPTIONS, COST_OPTIONS, SERVICE_OPTIONS } from "@/features/cur-csv-generator/constants";
+import { DATE_OPTIONS, COST_OPTIONS, SERVICE_OPTIONS, TAX_OPTIONS } from "@/features/cur-csv-generator/constants";
 
 type CurRowProps = {
   row: RowData;
@@ -11,7 +11,7 @@ type CurRowProps = {
 
 export const CurRow = ({ row, canDelete, onUpdate, onRemove }: CurRowProps) => {
   return (
-    <div className="grid grid-cols-[1fr_1fr_1fr_40px] gap-3 items-center">
+    <div className="grid grid-cols-[1fr_1fr_1fr_auto_40px] gap-3 items-center">
       <SelectableField
         value={row.date}
         isCustom={row.dateCustom}
@@ -48,6 +48,18 @@ export const CurRow = ({ row, canDelete, onUpdate, onRemove }: CurRowProps) => {
           onUpdate({ serviceCustom: isCustom, service: resetValue })
         }
       />
+
+      <select
+        value={row.tax}
+        onChange={(e) => onUpdate({ tax: e.target.value })}
+        className="rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-gray-100"
+      >
+        {TAX_OPTIONS.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
 
       <button
         onClick={onRemove}

@@ -5,4 +5,5 @@ export type RowData = {
   costCustom: boolean;
   service: string;
   serviceCustom: boolean;
+  tax: string;
 };
