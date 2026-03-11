@@ -7,4 +7,5 @@ export type RowData = {
   serviceCustom: boolean;
   tax: string;
   tag: string;
+  tagCustom: boolean;
 };

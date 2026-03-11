@@ -71,17 +71,17 @@ export const CurRow = ({ row, canDelete, onUpdate, onRemove }: CurRowProps) => {
       </FieldItem>
 
       <FieldItem label="タグ">
-        <select
+        <SelectableField
           value={row.tag}
-          onChange={(e) => onUpdate({ tag: e.target.value })}
-          className="block w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-gray-100"
-        >
-          {TAG_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
+          isCustom={row.tagCustom}
+          options={TAG_OPTIONS}
+          placeholder="タグを入力"
+          defaultOption={TAG_OPTIONS[0]}
+          onChange={(tag) => onUpdate({ tag })}
+          onToggleCustom={(isCustom, resetValue) =>
+            onUpdate({ tagCustom: isCustom, tag: resetValue })
+          }
+        />
       </FieldItem>
 
       <button
