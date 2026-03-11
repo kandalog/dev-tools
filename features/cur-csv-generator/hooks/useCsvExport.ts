@@ -16,6 +16,9 @@ const buildCsvString = (rows: RowData[]): string => {
     if (row.tax === "税金") {
       record.line_item_line_item_type = "Tax";
     }
+    if (row.tag !== "------") {
+      record.resource_tags = JSON.stringify({ user_environment: row.tag });
+    }
     return headers.map((key) => {
       const val = record[key as keyof typeof record];
       const str = String(val);
