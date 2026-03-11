@@ -6,4 +6,5 @@ export type RowData = {
   service: string;
   serviceCustom: boolean;
   tax: string;
+  tag: string;
 };

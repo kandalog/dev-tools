@@ -32,6 +32,8 @@ export const SERVICE_OPTIONS = [
 
 export const TAX_OPTIONS = ["------", "税金"];
 
+export const TAG_OPTIONS = ["------"];
+
 export const createEmptyRow = (): RowData => ({
   date: DATE_OPTIONS[0],
   dateCustom: false,
@@ -40,4 +42,5 @@ export const createEmptyRow = (): RowData => ({
   service: SERVICE_OPTIONS[0],
   serviceCustom: false,
   tax: TAX_OPTIONS[0],
+  tag: TAG_OPTIONS[0],
 });
