@@ -13,11 +13,13 @@ const buildCsvString = (rows: RowData[]): string => {
     record.line_item_usage_start_date = `${row.date}T00:00:00.000Z`;
     record.line_item_unblended_cost = Number(row.cost);
     record.line_item_product_code = row.service;
-    if (row.tax === "税金") {
-      record.line_item_line_item_type = "Tax";
-    }
+    record.product_product_family = row.productFamily;
+    record.line_item_line_item_type =
+      row.tax === "税金" ? "Tax" : "Usage";
     if (row.tag !== "------") {
-      record.resource_tags = JSON.stringify({ user_environment: row.tag });
+      record.resource_tags = JSON.stringify({
+        [row.tagKey]: row.tag,
+      });
     }
     return headers.map((key) => {
       const val = record[key as keyof typeof record];

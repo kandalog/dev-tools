@@ -30,9 +30,19 @@ export const SERVICE_OPTIONS = [
   "AWSCloudTrail",
 ];
 
-export const TAX_OPTIONS = ["------", "税金"];
+export const TAX_OPTIONS = ["Usage", "税金"];
 
-export const TAG_OPTIONS = ["------", "staging", "production"];
+/** resource_tags のキー */
+export const TAG_KEY_OPTIONS = ["user_name", "user_environment"];
+
+/** resource_tags の値（------ はタグなし） */
+export const TAG_VALUE_OPTIONS = ["------", "staging", "production"];
+
+/** 新規行のタグの初期値 */
+export const DEFAULT_TAG_KEY = "user_environment";
+export const DEFAULT_TAG_VALUE = "staging";
+
+export const PRODUCT_FAMILY_OPTIONS = ["Compute Instance", "Database Instance"];
 
 export const createEmptyRow = (): RowData => ({
   date: DATE_OPTIONS[0],
@@ -41,7 +51,10 @@ export const createEmptyRow = (): RowData => ({
   costCustom: false,
   service: SERVICE_OPTIONS[0],
   serviceCustom: false,
+  productFamily: PRODUCT_FAMILY_OPTIONS[0],
+  productFamilyCustom: false,
   tax: TAX_OPTIONS[0],
-  tag: TAG_OPTIONS[0],
+  tagKey: DEFAULT_TAG_KEY,
+  tag: DEFAULT_TAG_VALUE,
   tagCustom: false,
 });

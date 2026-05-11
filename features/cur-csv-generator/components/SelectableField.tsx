@@ -7,6 +7,8 @@ type SelectableFieldProps = {
   inputType?: "text" | "number";
   placeholder?: string;
   defaultOption: string;
+  /** プルダウン末尾の手動入力オプションの表示ラベル */
+  customOptionLabel?: string;
   onChange: (value: string) => void;
   onToggleCustom: (isCustom: boolean, resetValue: string) => void;
 };
@@ -18,6 +20,7 @@ export const SelectableField = ({
   inputType = "text",
   placeholder,
   defaultOption,
+  customOptionLabel = "カスタム入力",
   onChange,
   onToggleCustom,
 }: SelectableFieldProps) => {
@@ -59,7 +62,7 @@ export const SelectableField = ({
           {opt}
         </option>
       ))}
-      <option value={CUSTOM_INPUT}>カスタム入力</option>
+      <option value={CUSTOM_INPUT}>{customOptionLabel}</option>
     </select>
   );
 };
